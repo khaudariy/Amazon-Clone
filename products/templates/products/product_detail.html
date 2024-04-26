@@ -36,18 +36,14 @@
                                 <label class="details-label off">-10%</label>
                             </div>
                             <ul class="details-preview"> 
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
+                                {% for image in images %}
+                                 <li style="display: inline-block;"><img src="{{image.image.url}}" ></li>
+                                {% endfor %}
                             </ul>
                             <ul class="details-thumb">
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
+                                {% for image in images %}
+                                    <li style="display: inline-block;"><img src="{{image.image.url}}" ></li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
