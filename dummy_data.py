@@ -10,13 +10,11 @@ from products.models import Product , Brand , Review
 def seed_brand(n):
     fake = Faker()
     images = ['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg','08.jpg','09.jpg','10.jpg']
-
     for _ in range(n):
         Brand.objects.create(
             name = fake.name(),
             image = f"brand/{images[random.randint(0,9)]}"
         )
-
 
 
 
@@ -38,9 +36,10 @@ def seed_products(n):
             brand = brands[random.randint(0,len(brands)-1)],
             
         )
+#seed_brand(200)
+#seed_brand(1000)
+#Product.objects.all().delete()
+seed_products(2000)
 
-seed_products(1000)
-
-
-def seef_reviews(n):
-    pass
+#def seef_reviews(n):
+   #pass
