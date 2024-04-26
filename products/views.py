@@ -18,3 +18,9 @@ class ProductDetail(DetailView):
         context["images"] =  ProductImage.objects.filter(product = self.get_object())
         context["related"] = Product.objects.filter(brand=self.get_object().brand)                        
         return context  
+    
+class BrandList(ListView):
+    model = Brand
+
+class BrandDetail(DetailView):
+    pass        
