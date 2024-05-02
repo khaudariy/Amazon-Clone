@@ -44,7 +44,8 @@ INSTALLED_APPS = [
         'drf_yasg',
         "debug_toolbar",
 
-'products'
+'products',
+'settings'
     
 ]
 
