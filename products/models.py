@@ -30,7 +30,20 @@ class Product(models.Model):
         super(Product, self).save(*args, **kwargs)
     def __str__(self):
         return self.name 
+    def avg_rate(self):
+            total = 0 
+            reviews = self.review_product.all()
+            if len(reviews)>0:
+                for item in reviews:
+                    total+=item.rate
+                avg = total / len(reviews) 
+            else:
+                avg = 0      
+            return avg 
 
+    def review_count(self):
+            reviews = self.review_product.all().count()
+            return reviews 
 
 
 class ProductImage(models.Model):
@@ -47,6 +60,8 @@ class Brand(models.Model):
         super(Brand, self).save(*args, **kwargs)
     def __str__(self):
         return self.name 
+    
+    
     
 
 class Review(models.Model):
