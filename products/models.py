@@ -30,6 +30,7 @@ class Product(models.Model):
         super(Product, self).save(*args, **kwargs)
     def __str__(self):
         return self.name 
+    @property
     def avg_rate(self):
             total = 0 
             reviews = self.review_product.all()
@@ -41,6 +42,7 @@ class Product(models.Model):
                 avg = 0      
             return avg 
 
+    @property
     def review_count(self):
             reviews = self.review_product.all().count()
             return reviews 

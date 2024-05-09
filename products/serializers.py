@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Product,Brand,Review,ProductImage
+from taggit.serializers import (TagListSerializerField,TaggitSerializer)
 
 
 
@@ -16,35 +17,25 @@ class ProductReviewSerliazer(serializers.ModelSerializer):
         model = Review
         fields = ['user','rate','review','created_at']
 
-class ProductListSerializer(serializers.ModelSerializer):
+class ProductListSerializer(TaggitSerializer,serializers.ModelSerializer):
     brand = serializers.StringRelatedField()
-    review_count = serializers.SerializerMethodField(method_name='get_review_count')
-    avg_rate = serializers.SerializerMethodField(method_name='get_avg_rate')
+    tags = TagListSerializerField()
+
     class Meta:
         model = Product
-        fields = '__all__'
-    def get_avg_rate(self,object):
-        total = 0 
-        reviews = object.review_product.all()
-        if len(reviews)>0:
-            for item in reviews:
-                total+=item.rate
-            avg = total / len(reviews) 
-        else:
-            avg = 0      
-        return avg 
+        fields = ['tags','name','flag','price','image','sku','subtitle','description','brand','slug','review_count','avg_rate']
+   
 
-    def get_review_count(self,object):
-        reviews = object.review_product.all().count()
-        return reviews    
-
-class ProductDetailSerializer(serializers.ModelSerializer):
+class ProductDetailSerializer(TaggitSerializer,serializers.ModelSerializer):
      brand = serializers.StringRelatedField()
      image = ProductImageSerliazer(source='product_image',many=True)
      reviews = ProductReviewSerliazer(source='review_product',many=True)
+     tags = TagListSerializerField()
+
      class Meta:
        model = Product
-       fields = '__all__' 
+       fields = ['tags','name','reviews','image','flag','price','image','sku','subtitle','description','brand','slug','review_count','avg_rate']
+
 class BrandListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
