@@ -15,3 +15,5 @@ class Settings(models.Model):
     facebook = models.URLField(null=True , blank=True)
     youtube = models.URLField(null=True , blank=True)
 
+def __str__(self):
+    return self.name
