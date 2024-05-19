@@ -1,3 +1,7 @@
 from django.shortcuts import render
+# from .models import Order
 
-# Create your views here.
+
+# def order_list(request):
+#     data = Order.objects
+# # Create your views here.
