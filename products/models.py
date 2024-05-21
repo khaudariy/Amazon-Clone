@@ -29,8 +29,8 @@ class Product(models.Model):
         self.slug =slugify(self.name)
         super(Product, self).save(*args, **kwargs)
     def __str__(self):
-        return self.name 
-    @property
+        return self.name
+    @property 
     def avg_rate(self):
             total = 0 
             reviews = self.review_product.all()
@@ -41,8 +41,7 @@ class Product(models.Model):
             else:
                 avg = 0      
             return avg 
-
-    @property
+    @property 
     def review_count(self):
             reviews = self.review_product.all().count()
             return reviews 
