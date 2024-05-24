@@ -61,9 +61,10 @@ class CartDetail(models.Model):
 class Coupon(models.Model):
     code = models.CharField(max_length=20)
     start_date = models.DateField(default=timezone.now)
-    end_date = models.DateField()
+    end_date = models.DateField(null=True,blank=True)
     quantity = models.IntegerField()
     discount = models.FloatField()
+    
 
     def save(self,*args, **kwargs):
         week = datetime.timedelta(days=7)
