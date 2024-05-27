@@ -42,6 +42,7 @@ schema_view = get_schema_view(
    permission_classes=(permissions.AllowAny,),
 )
 urlpatterns = [
+    path('accounts/', include('accounts.urls')),
     path('',include('settings.urls')),
     path('products/', include('products.urls')),
     path('orders/', include('orders.urls')),
