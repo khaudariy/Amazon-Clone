@@ -43,6 +43,7 @@ schema_view = get_schema_view(
 )
 urlpatterns = [
     path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('',include('settings.urls')),
     path('products/', include('products.urls')),
     path('orders/', include('orders.urls')),

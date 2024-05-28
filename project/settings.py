@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,11 +44,13 @@ INSTALLED_APPS = [
         'django_filters',
         'drf_yasg',
         "debug_toolbar",
+"django_bootstrap5",
+
 
 'products',
 'settings',
 'orders',
-'accounts',
+
     
 ]
 
@@ -156,5 +159,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTHENTICATION_BACKENDS = [
     'accounts.backend.EmailOrUsernameLogin'
 ]
-
+LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
