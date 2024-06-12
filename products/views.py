@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from .models import Product, Brand , Review ,ProductImage
 from django.db.models import Q , F , Value
 from django.db.models.aggregates import Count,Sum,Avg,Max,Min
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 # Create your views here.
 
 class ProductList(ListView):
@@ -51,6 +53,10 @@ def add_review(request,slug):
         review = review,
         rate = rate
     )
-    return redirect(f'/products/{slug}')
+
+    reviews = Review.objects.filter(product=product)
+    page = render_to_string('includes/reviews.html',{'reviews':reviews})
+    return JsonResponse({'result':page})
+    #return redirect(f'/products/{slug}')
 
 
