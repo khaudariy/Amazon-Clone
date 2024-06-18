@@ -274,6 +274,7 @@
                         dataType: 'json',
                         success:function (response){
                             $('#all-reviews').html(response['result'])
+                            $('#reviewForm').trigger("reset")
                         },
                   
                         
